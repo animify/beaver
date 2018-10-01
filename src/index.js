@@ -1,7 +1,7 @@
 import React from 'react';
 import * as PIXI from "pixi.js";
-import registerServiceWorker from './registerServiceWorker';
 import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 const e = new PIXI.interaction.InteractionData();
 const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
