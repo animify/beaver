@@ -1,11 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import * as PIXI from "pixi.js";
 import { render } from '@inlet/react-pixi';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import store from './store';
 
 const e = new PIXI.interaction.InteractionData();
 const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
@@ -56,13 +54,7 @@ function zoom(x, y, delta) {
     graphics.updateTransform();
 }
 
-const EditorPage = () => (
-    <Provider store={store}>
-        <App />
-    </Provider >
 
-);
-
-render(<EditorPage />, app.stage)
+render(<App />, app.stage)
 
 registerServiceWorker();

@@ -2,7 +2,7 @@ import sample from './sample.json';
 
 export default {
     initialState: {
-        settings: sample.settings,
+        // settings: sample.settings,
         doc: {
             page: sample.currentPage,
             modelOrder: Object.keys(sample.pages[sample.currentPage].entities),
@@ -10,9 +10,9 @@ export default {
             selected: [],
             hovering: null,
         },
-        boards: {
-            all: sample.pages,
-            boardsOrder: Object.keys(sample.pages)
-        }
+        // boards: {
+        //     all: sample.pages,
+        //     boardsOrder: Object.keys(sample.pages)
+        // }
     }
 };
