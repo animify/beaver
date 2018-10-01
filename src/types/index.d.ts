@@ -18,7 +18,22 @@ interface StoreState {
 
 interface Model {
     pid: string;
-    [index: string]: any;
+    title: string;
+    position: {
+        x: number;
+        y: number;
+    };
+    size: {
+        h: number;
+        w: number;
+    };
+}
+
+interface Image extends Model {
+    image: string;
+}
+
+interface Screen extends Image {
 }
 
 interface Doc {

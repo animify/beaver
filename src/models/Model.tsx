@@ -4,6 +4,10 @@ import * as PIXI from "pixi.js";
 import { Sprite } from '@inlet/react-pixi';
 import { getModel } from '../selectors';
 
+type IModelProps = {
+    pid: string;
+}
+
 type ModelProps = {
     model?: {
         pid: string;
@@ -13,7 +17,7 @@ type ModelProps = {
     },
 }
 
-const makeMapStateToProps = (initialState: StoreState, initialProps: Model) => {
+const makeMapStateToProps = (initialState: StoreState, initialProps: IModelProps) => {
     return (state: StoreState) => ({
         model: getModel(state, initialProps),
     });
