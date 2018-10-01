@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import undoable, { includeAction, groupByActionTypes } from 'redux-undo';
+import undoable from 'redux-undo';
 import docReducer from './docReducer';
 
 export default combineReducers({

@@ -41,7 +41,7 @@ function pan(x, y) {
 function zoom(x, y, delta) {
     const graphics = app.stage.getChildAt(0);
     const direction = delta < 0 ? 1 : -1;
-    const factor = (1 + direction * 0.1);
+    const factor = (1 + direction * 0.2);
     graphics.scale.x *= factor;
     graphics.scale.y *= factor;
 
