@@ -23,7 +23,7 @@ export function pan(x: number, y: number) {
 export function zoom(x: number, y: number, delta: number) {
     const graphics = Storage.CONTAINER as PIXI.DisplayObject;
     const direction = delta < 0 ? 1 : -1;
-    const factor = (1 + direction * 0.2);
+    const factor = (1 + direction * 0.14);
     graphics.scale.x *= factor;
     graphics.scale.y *= factor;
 

@@ -9,12 +9,7 @@ type IModelProps = {
 }
 
 type ModelProps = {
-    model?: {
-        pid: string;
-        type: string;
-        image: string;
-        position: any;
-    },
+    model?: Model,
 }
 
 const makeMapStateToProps = (initialState: StoreState, initialProps: IModelProps) => {
@@ -25,7 +20,7 @@ const makeMapStateToProps = (initialState: StoreState, initialProps: IModelProps
 
 const Model: React.StatelessComponent<ModelProps> = ({ model }) => {
     if (model.type === 'screen') {
-        return (<Sprite key={model.pid} texture={PIXI.Texture.fromImage(require('./test-images/' + model.image))} x={model.position.x} y={model.position.y} />);
+        return (<Sprite key={model.pid} texture={PIXI.Texture.fromImage(require('./test-images/' + (model as Screen).image))} x={model.position.x} y={model.position.y} />);
     }
 
     return null;

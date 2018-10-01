@@ -3,17 +3,15 @@ import store from '../store';
 import { duplicateSelected } from '../store/actions/view';
 
 document.addEventListener('mousewheel', (e: MouseWheelEvent) => {
-    if (e.ctrlKey) {
-        e.preventDefault();
+    if (e.altKey) {
         zoom(e.clientX, e.clientY, e.deltaY);
     } else {
         pan(e.deltaX, e.deltaY);
     }
-});
+}, { passive: true });
 
 document.addEventListener('keypress', (e: KeyboardEvent) => {
     if (e.key === 'd') {
-        console.log(e);
         store.dispatch(duplicateSelected());
     }
 });

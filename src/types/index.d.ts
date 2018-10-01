@@ -2,7 +2,9 @@ interface StoreState {
     view: {
         document: string;
         modelOrder: Model['pid'][];
-        models: Model[];
+        models: {
+            [index: string]: Model;
+        };
         selected: Model['pid'][];
         hovering: Model['pid'];
     } & {
@@ -11,8 +13,6 @@ interface StoreState {
     documents: {
         all: Doc[],
         documentOrder: Doc['pid'][];
-    } & {
-        present: StoreState['documents'],
     },
 }
 
@@ -27,6 +27,7 @@ interface Model {
         h: number;
         w: number;
     };
+    type: string;
 }
 
 interface Image extends Model {

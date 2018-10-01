@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment, Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Model from '../models/Model';
@@ -12,7 +12,7 @@ const mapStateToProps = (state: StoreState) => ({
     modelOrder: getModelOrder(state)
 });
 
-class View extends Component<ViewProps> {
+class View extends PureComponent<ViewProps> {
     public render() {
         const { modelOrder } = this.props;
         return (
