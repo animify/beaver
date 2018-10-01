@@ -1,5 +1,7 @@
-import { render, Stage, Sprite, Text, Container, Graphics } from '@inlet/react-pixi';
-import getSample from "../sample";
+import React from 'react';
+import * as PIXI from "pixi.js";
+import { Sprite, Container } from '@inlet/react-pixi';
+import getSample from "./sample";
 
 const Sample = getSample();
 
@@ -10,3 +12,5 @@ const App = () => (
         ))}
     </Container>
 );
+
+export default App;

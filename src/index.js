@@ -1,7 +1,9 @@
 import React from 'react';
 import * as PIXI from "pixi.js";
+import { render } from '@inlet/react-pixi';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import './index.css';
 
 const e = new PIXI.interaction.InteractionData();
 const app = new PIXI.Application(window.innerWidth, window.innerHeight, {
