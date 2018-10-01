@@ -5,6 +5,7 @@ import parser from '../../parser';
 const viewReducer = produce((draft: StoreState['view'], action: ReducerAction) => {
     switch (action.type) {
         case 'DOCUMENT::CHANGE_BOARD':
+            draft.selected.length = 0;
             draft.models = action.payload.models;
             draft.modelOrder.length = 0;
             draft.modelOrder = Object.keys(action.payload.models);
