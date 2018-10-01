@@ -4,13 +4,15 @@ import { Container } from '@inlet/react-pixi';
 import View from './containers/View'
 import store from './store';
 
-const App = () => (
-    <Provider store={store}>
-        <Container>
-            <View />
-        </Container>
-    </Provider >
-);
+const App = () => {
+    return (
+        <Provider store={store}>
+            <Container>
+                <View />
+            </Container>
+        </Provider >
+    )
+}
 
 export default App;
 

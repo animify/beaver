@@ -1,8 +1,11 @@
 import sample from './sample.json';
 
+interface ParserDefault {
+    initialState: StoreState;
+}
+
 export default {
     initialState: {
-        // settings: sample.settings,
         view: {
             document: sample.visibleDocument,
             modelOrder: Object.keys(sample.documents[sample.visibleDocument].entities),
@@ -12,7 +15,7 @@ export default {
         },
         documents: {
             all: sample.documents,
-            boardsOrder: Object.keys(sample.documents)
+            documentOrder: Object.keys(sample.documents)
         }
     }
-};
+} as ParserDefault;

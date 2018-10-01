@@ -1,7 +1,7 @@
 import produce from 'immer';
 import parser from '../../parser';
 
-const viewReducer = produce((draft, action) => {
+const viewReducer = produce((draft: StoreState['view'], action: ReducerAction) => {
     switch (action.type) {
         case 'MODEL::UPDATE':
             draft.models[action.id] = {
