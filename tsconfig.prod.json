@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "preserveConstEnums": true,
+        "pretty": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "allowSyntheticDefaultImports": true,
+        "lib": [
+            "dom",
+            "es2017"
+        ],
+        "module": "esnext",
+        "importHelpers": true,
+        "target": "es6",
+        "jsx": "react"
+    }
+}
