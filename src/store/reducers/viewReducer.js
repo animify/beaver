@@ -1,7 +1,7 @@
 import produce from 'immer';
 import parser from '../../parser';
 
-const doc = produce((draft, action) => {
+const viewReducer = produce((draft, action) => {
     switch (action.type) {
         case 'MODEL::UPDATE':
             draft.models[action.id] = {
@@ -12,7 +12,7 @@ const doc = produce((draft, action) => {
         default:
             return draft;
     }
-}, parser.initialState.doc);
+}, parser.initialState.view);
 
-export default doc;
+export default viewReducer;
 

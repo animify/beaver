@@ -13,7 +13,7 @@ const makeMapStateToProps = (_, initialProps) => {
 
 const Model = ({ model }) => {
     if (model.model === 'screen') {
-        return (<Sprite key={model.id} texture={PIXI.Texture.fromImage(require('./assets/' + model.image))} x={model.position.x} y={model.position.y}></Sprite>);
+        return (<Sprite key={model.id} texture={PIXI.Texture.fromImage(require('./test-images/' + model.image))} x={model.position.x} y={model.position.y}></Sprite>);
     }
 
     return null

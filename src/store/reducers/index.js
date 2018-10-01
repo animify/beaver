@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import undoable from 'redux-undo';
-import docReducer from './docReducer';
+import viewReducer from './viewReducer';
+import documentsReducer from './documentsReducer';
 
 export default combineReducers({
-    doc: undoable(docReducer),
-    // doc: undoable(docReducer, { groupBy: groupByActionTypes('MODEL::UPDATE'), filter: includeAction(['MODEL::UPDATE']) }),
+    view: undoable(viewReducer),
+    documents: documentsReducer,
 });

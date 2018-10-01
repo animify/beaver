@@ -13,8 +13,8 @@ class View extends PureComponent {
         const { modelOrder } = this.props;
         return (
             <Fragment>
-                {modelOrder.map(modelId => (
-                    <Model key={`model-${modelId}`} modelId={modelId} />
+                {modelOrder.map(pid => (
+                    <Model key={`model-${pid}`} pid={pid} />
                 ))}
             </Fragment >
         );

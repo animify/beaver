@@ -3,16 +3,16 @@ import sample from './sample.json';
 export default {
     initialState: {
         // settings: sample.settings,
-        doc: {
-            page: sample.visiblePage,
-            modelOrder: Object.keys(sample.pages[sample.visiblePage].entities),
-            models: sample.pages[sample.visiblePage].entities,
+        view: {
+            document: sample.visibleDocument,
+            modelOrder: Object.keys(sample.documents[sample.visibleDocument].entities),
+            models: sample.documents[sample.visibleDocument].entities,
             selected: [],
             hovering: null,
         },
-        // boards: {
-        //     all: sample.pages,
-        //     boardsOrder: Object.keys(sample.pages)
-        // }
+        documents: {
+            all: sample.documents,
+            boardsOrder: Object.keys(sample.documents)
+        }
     }
 };
