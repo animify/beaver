@@ -2,12 +2,12 @@ import Storage from '../utils/storage';
 import { Point } from "pixi.js";
 import { INTERACTION_DATA } from '../utils/constants';
 
-const getGraphCoords = (function () {
+export const clientCoords = (function () {
     const ctx = {
         global: { x: 0, y: 0 } as Point
     };
 
-    return (x: number, y: number, graphics: PIXI.DisplayObject) => {
+    return (x: number, y: number, graphics: PIXI.DisplayObject = Storage.CONTAINER) => {
         ctx.global.x = x;
         ctx.global.y = y;
         return INTERACTION_DATA.getLocalPosition(graphics, { x, y } as Point, ctx.global);
@@ -27,9 +27,9 @@ export function zoom(x: number, y: number, delta: number) {
     graphics.scale.x *= factor;
     graphics.scale.y *= factor;
 
-    const beforeTransform = getGraphCoords(x, y, graphics);
+    const beforeTransform = clientCoords(x, y, graphics);
     graphics.updateTransform();
-    const afterTransform = getGraphCoords(x, y, graphics);
+    const afterTransform = clientCoords(x, y, graphics);
 
     graphics.position.x += (afterTransform.x - beforeTransform.x) * graphics.scale.x;
     graphics.position.y += (afterTransform.y - beforeTransform.y) * graphics.scale.y;
