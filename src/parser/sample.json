@@ -3,7 +3,7 @@
     "documents": {
         "fbbd1128-1e4a-4bf8-b27e-e8c835e4db83": {
             "models": {
-                "screen2f127b36-a58f-4ea5-baa6-af63925a7b42": {
+                "2f127b36-a58f-4ea5-baa6-af63925a7b42": {
                     "pid": "2f127b36-a58f-4ea5-baa6-af63925a7b42",
                     "title": "Sign Up",
                     "position": {
@@ -18,7 +18,7 @@
                     "type": "screen",
                     "zIndex": 2
                 },
-                "screen30755eed-7434-4756-8cde-33e212d6d72a": {
+                "30755eed-7434-4756-8cde-33e212d6d72a": {
                     "pid": "30755eed-7434-4756-8cde-33e212d6d72a",
                     "title": "Spot - Extended Info",
                     "position": {
@@ -33,7 +33,7 @@
                     "type": "screen",
                     "zIndex": 10
                 },
-                "screen587431d9-6c0f-498c-86dd-d5f0493baa14": {
+                "587431d9-6c0f-498c-86dd-d5f0493baa14": {
                     "pid": "587431d9-6c0f-498c-86dd-d5f0493baa14",
                     "title": "Single Message",
                     "position": {
@@ -48,7 +48,7 @@
                     "type": "screen",
                     "zIndex": 1
                 },
-                "screen6610878c-3f85-4f5a-a21d-75599318afab": {
+                "6610878c-3f85-4f5a-a21d-75599318afab": {
                     "pid": "6610878c-3f85-4f5a-a21d-75599318afab",
                     "title": "Surfspots - Map",
                     "position": {
@@ -63,7 +63,7 @@
                     "type": "screen",
                     "zIndex": 3
                 },
-                "screen8a2c49ef-930c-40d1-9890-1a5062013553": {
+                "8a2c49ef-930c-40d1-9890-1a5062013553": {
                     "pid": "8a2c49ef-930c-40d1-9890-1a5062013553",
                     "title": "Spot - Short Info",
                     "position": {
@@ -78,7 +78,7 @@
                     "type": "screen",
                     "zIndex": 14
                 },
-                "screen8d56ceb3-4358-4275-b907-79c1878ef104": {
+                "8d56ceb3-4358-4275-b907-79c1878ef104": {
                     "pid": "8d56ceb3-4358-4275-b907-79c1878ef104",
                     "title": "Share Article",
                     "position": {
@@ -93,7 +93,7 @@
                     "type": "screen",
                     "zIndex": 40
                 },
-                "screen9b7ea6ec-87ba-4d79-b021-3829c2e51b35": {
+                "9b7ea6ec-87ba-4d79-b021-3829c2e51b35": {
                     "pid": "9b7ea6ec-87ba-4d79-b021-3829c2e51b35",
                     "title": "List of Articles",
                     "position": {
@@ -108,7 +108,7 @@
                     "type": "screen",
                     "zIndex": 6
                 },
-                "screena2bc5190-2f42-4267-9a1e-b43343b2ba14": {
+                "a2bc5190-2f42-4267-9a1e-b43343b2ba14": {
                     "pid": "a2bc5190-2f42-4267-9a1e-b43343b2ba14",
                     "title": "Surfspots - List",
                     "position": {
@@ -123,7 +123,7 @@
                     "type": "screen",
                     "zIndex": 13
                 },
-                "screenb6def0e5-1690-4f6b-ad2a-fa1dad6ec7b2": {
+                "b6def0e5-1690-4f6b-ad2a-fa1dad6ec7b2": {
                     "pid": "b6def0e5-1690-4f6b-ad2a-fa1dad6ec7b2",
                     "title": "Messages List",
                     "position": {
@@ -138,7 +138,7 @@
                     "type": "screen",
                     "zIndex": 9
                 },
-                "screend6e19a00-f293-4d22-a88c-abebe4f93cf1": {
+                "d6e19a00-f293-4d22-a88c-abebe4f93cf1": {
                     "pid": "d6e19a00-f293-4d22-a88c-abebe4f93cf1",
                     "title": "Welcome Screen",
                     "position": {
@@ -153,7 +153,7 @@
                     "type": "screen",
                     "zIndex": 4
                 },
-                "screendec4fd88-8ac1-4592-9988-765b9c26421d": {
+                "dec4fd88-8ac1-4592-9988-765b9c26421d": {
                     "pid": "dec4fd88-8ac1-4592-9988-765b9c26421d",
                     "title": "Sign In",
                     "position": {
@@ -168,7 +168,7 @@
                     "type": "screen",
                     "zIndex": 12
                 },
-                "screened1f1835-6dca-400c-933e-84623b0f3b5d": {
+                "ed1f1835-6dca-400c-933e-84623b0f3b5d": {
                     "pid": "ed1f1835-6dca-400c-933e-84623b0f3b5d",
                     "title": "Single Article",
                     "position": {
@@ -183,7 +183,7 @@
                     "type": "screen",
                     "zIndex": 8
                 },
-                "screenf06062e8-816e-4189-8534-be023e6de68a": {
+                "f06062e8-816e-4189-8534-be023e6de68a": {
                     "pid": "f06062e8-816e-4189-8534-be023e6de68a",
                     "title": "Sign in with Facebook",
                     "position": {
@@ -204,7 +204,7 @@
         },
         "abbd1128-1e4a-4bf8-b27e-e8c835e4db83": {
             "models": {
-                "screen2f127b36-a58f-4ea5-baa6-af63925a7b42": {
+                "2f127b36-a58f-4ea5-baa6-af63925a7b42": {
                     "pid": "2f127b36-a58f-4ea5-baa6-af63925a7b42",
                     "title": "Sign Up",
                     "position": {
@@ -219,7 +219,7 @@
                     "type": "screen",
                     "zIndex": 2
                 },
-                "screen30755eed-7434-4756-8cde-33e212d6d72a": {
+                "30755eed-7434-4756-8cde-33e212d6d72a": {
                     "pid": "30755eed-7434-4756-8cde-33e212d6d72a",
                     "title": "Spot - Extended Info",
                     "position": {
@@ -234,7 +234,7 @@
                     "type": "screen",
                     "zIndex": 10
                 },
-                "screen587431d9-6c0f-498c-86dd-d5f0493baa14": {
+                "587431d9-6c0f-498c-86dd-d5f0493baa14": {
                     "pid": "587431d9-6c0f-498c-86dd-d5f0493baa14",
                     "title": "Single Message",
                     "position": {
@@ -249,7 +249,7 @@
                     "type": "screen",
                     "zIndex": 1
                 },
-                "screen6610878c-3f85-4f5a-a21d-75599318afab": {
+                "6610878c-3f85-4f5a-a21d-75599318afab": {
                     "pid": "6610878c-3f85-4f5a-a21d-75599318afab",
                     "title": "Surfspots - Map",
                     "position": {
@@ -264,7 +264,7 @@
                     "type": "screen",
                     "zIndex": 3
                 },
-                "screen8a2c49ef-930c-40d1-9890-1a5062013553": {
+                "8a2c49ef-930c-40d1-9890-1a5062013553": {
                     "pid": "8a2c49ef-930c-40d1-9890-1a5062013553",
                     "title": "Spot - Short Info",
                     "position": {
@@ -279,7 +279,7 @@
                     "type": "screen",
                     "zIndex": 14
                 },
-                "screen8d56ceb3-4358-4275-b907-79c1878ef104": {
+                "8d56ceb3-4358-4275-b907-79c1878ef104": {
                     "pid": "8d56ceb3-4358-4275-b907-79c1878ef104",
                     "title": "Share Article",
                     "position": {
@@ -294,7 +294,7 @@
                     "type": "screen",
                     "zIndex": 40
                 },
-                "screen9b7ea6ec-87ba-4d79-b021-3829c2e51b35": {
+                "9b7ea6ec-87ba-4d79-b021-3829c2e51b35": {
                     "pid": "9b7ea6ec-87ba-4d79-b021-3829c2e51b35",
                     "title": "List of Articles",
                     "position": {
@@ -309,7 +309,7 @@
                     "type": "screen",
                     "zIndex": 6
                 },
-                "screena2bc5190-2f42-4267-9a1e-b43343b2ba14": {
+                "a2bc5190-2f42-4267-9a1e-b43343b2ba14": {
                     "pid": "a2bc5190-2f42-4267-9a1e-b43343b2ba14",
                     "title": "Surfspots - List",
                     "position": {
@@ -324,7 +324,7 @@
                     "type": "screen",
                     "zIndex": 13
                 },
-                "screenb6def0e5-1690-4f6b-ad2a-fa1dad6ec7b2": {
+                "b6def0e5-1690-4f6b-ad2a-fa1dad6ec7b2": {
                     "pid": "b6def0e5-1690-4f6b-ad2a-fa1dad6ec7b2",
                     "title": "Messages List",
                     "position": {
@@ -339,7 +339,7 @@
                     "type": "screen",
                     "zIndex": 9
                 },
-                "screend6e19a00-f293-4d22-a88c-abebe4f93cf1": {
+                "d6e19a00-f293-4d22-a88c-abebe4f93cf1": {
                     "pid": "d6e19a00-f293-4d22-a88c-abebe4f93cf1",
                     "title": "Welcome Screen",
                     "position": {
@@ -354,7 +354,7 @@
                     "type": "screen",
                     "zIndex": 4
                 },
-                "screendec4fd88-8ac1-4592-9988-765b9c26421d": {
+                "dec4fd88-8ac1-4592-9988-765b9c26421d": {
                     "pid": "dec4fd88-8ac1-4592-9988-765b9c26421d",
                     "title": "Sign In",
                     "position": {
@@ -369,7 +369,7 @@
                     "type": "screen",
                     "zIndex": 12
                 },
-                "screened1f1835-6dca-400c-933e-84623b0f3b5d": {
+                "ed1f1835-6dca-400c-933e-84623b0f3b5d": {
                     "pid": "ed1f1835-6dca-400c-933e-84623b0f3b5d",
                     "title": "Single Article",
                     "position": {
@@ -384,7 +384,7 @@
                     "type": "screen",
                     "zIndex": 8
                 },
-                "screenf06062e8-816e-4189-8534-be023e6de68a": {
+                "f06062e8-816e-4189-8534-be023e6de68a": {
                     "pid": "f06062e8-816e-4189-8534-be023e6de68a",
                     "title": "Sign in with Facebook",
                     "position": {

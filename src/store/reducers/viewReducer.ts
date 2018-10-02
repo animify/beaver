@@ -1,9 +1,17 @@
 import produce from 'immer';
 import cuid from 'cuid';
 import parser from '../../parser';
+import { HistoryStoreState } from '../../types/module';
 
-const viewReducer = produce((draft: StoreState['view'], action: ReducerAction) => {
+const viewReducer = produce((draft: HistoryStoreState['view'], action: ReducerAction) => {
     switch (action.type) {
+        case 'MODEL::UPDATE':
+            draft.models[action.payload.id] = {
+                ...draft.models[action.payload.id],
+                ...action.payload.props
+            };
+            break;
+
         case 'DOCUMENT::CHANGE_BOARD':
             draft.selected.length = 0;
             draft.models = action.payload.models;

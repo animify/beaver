@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import undoable from 'redux-undo';
+import undoable, { groupByActionTypes, includeAction } from 'redux-undo';
 import viewReducer from './viewReducer';
 import documentsReducer from './documentsReducer';
 

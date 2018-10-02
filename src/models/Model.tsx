@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import * as PIXI from "pixi.js";
 import { Sprite } from '@inlet/react-pixi';
 import { getModel } from '../selectors';
-import { clientCoords } from '../utils/utils';
+import { Dispatch, bindActionCreators } from 'redux';
 import Storage from '../utils/storage';
 import produce from 'immer';
+import { updateModel } from '../store/actions/view';
+import { HistoryStoreState } from '../types/module';
 
 type IModelProps = {
     pid: string;
@@ -13,6 +15,7 @@ type IModelProps = {
 
 type ModelProps = {
     model?: Model,
+    updateModel?: (pid: Model['pid'], props: Partial<Model>) => void
 }
 
 type ModelState = {
@@ -21,11 +24,15 @@ type ModelState = {
     draggingInitialCoords: PIXI.Point;
 }
 
-const makeMapStateToProps = (initialState: StoreState, initialProps: IModelProps) => {
-    return (state: StoreState) => ({
+const makeMapStateToProps = (initialState: HistoryStoreState, initialProps: IModelProps) => {
+    return (state: HistoryStoreState) => ({
         model: getModel(state, initialProps),
     });
 }
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+    updateModel
+}, dispatch);
 
 class BaseModel extends PureComponent<ModelProps, ModelState> {
     state = {
@@ -34,9 +41,11 @@ class BaseModel extends PureComponent<ModelProps, ModelState> {
         model: { ...this.props.model },
     } as ModelState;
 
+    componentWillReceiveProps(props: any) {
+        console.log('new props', props);
+    }
+
     onDragStart = (e: PIXI.interaction.InteractionEvent) => {
-        console.log('starting drag');
-        console.log('e', e);
         this.setState(() => ({
             dragging: true,
             draggingInitialCoords: e.data.getLocalPosition(Storage.CONTAINER)
@@ -44,10 +53,9 @@ class BaseModel extends PureComponent<ModelProps, ModelState> {
     }
 
     onDragMove = (e: PIXI.interaction.InteractionEvent) => {
-        const { dragging, draggingInitialCoords } = this.state;
 
-        if (dragging) {
-            const client = clientCoords(e.data.global.x, e.data.global.y)
+        if (this.state.dragging) {
+            const { draggingInitialCoords } = this.state;
             const newPosition = e.data.getLocalPosition(Storage.CONTAINER);
 
             this.setState(produce((draft: any) => {
@@ -59,12 +67,14 @@ class BaseModel extends PureComponent<ModelProps, ModelState> {
     }
 
     onDragEnd = () => {
-        console.log('end drag');
         this.setState(() => ({ dragging: false }));
+
+        this.props.updateModel(this.state.model.pid, { position: { ...this.state.model.position } })
     }
 
     render() {
-        const { model } = this.state;
+        const { dragging, model } = this.state;
+        const position = dragging ? model.position : this.props.model.position;
 
         if (model.type === 'screen') {
             return (
@@ -76,8 +86,8 @@ class BaseModel extends PureComponent<ModelProps, ModelState> {
                     mouseup={this.onDragEnd}
                     mouseupoutside={this.onDragEnd}
                     texture={PIXI.Texture.fromImage(require('./test-images/' + (model as Screen).image))}
-                    x={model.position.x}
-                    y={model.position.y}
+                    x={position.x}
+                    y={position.y}
                 />
             );
         }
@@ -87,5 +97,6 @@ class BaseModel extends PureComponent<ModelProps, ModelState> {
 }
 
 export default connect(
-    makeMapStateToProps
+    makeMapStateToProps,
+    mapDispatchToProps
 )(BaseModel);

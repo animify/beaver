@@ -1,4 +1,5 @@
 import sample from './sample.json';
+import { HistoryStoreState } from '../types/module';
 
 interface ParserDefault {
     sample: {
@@ -11,7 +12,7 @@ interface ParserDefault {
             }
         }
     }
-    initialState: StoreState;
+    initialState: HistoryStoreState;
 }
 
 export default {

@@ -5,6 +5,7 @@ import parser from '../parser';
 import { Dispatch, bindActionCreators } from 'redux';
 import { setEntities } from '../store/actions/view';
 import store from '../store';
+import { StateWithHistory } from 'redux-undo';
 
 type PanelsProps = {
     documentOrder?: string[],
@@ -22,7 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 
 class Panels extends PureComponent<PanelsProps> {
     private goToBoard(pid: string) {
-        const { models: currentModels } = (store.getState().view as StoreState['view']).present;
+        const { models: currentModels } = store.getState().view.present as StateWithHistory<StoreState['view']>['present'];
         parser.sample.documents[parser.sample.visibleDocument].models = currentModels;
         parser.sample.visibleDocument = pid;
 

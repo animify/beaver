@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Model from '../models/Model';
 import { getModelOrder } from '../selectors';
+import { HistoryStoreState } from '../types/module';
 
 type ViewProps = {
     modelOrder?: string[],
 }
 
-const mapStateToProps = (state: StoreState) => ({
+const mapStateToProps = (state: HistoryStoreState) => ({
     modelOrder: getModelOrder(state)
 });
 

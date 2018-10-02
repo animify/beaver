@@ -1,3 +1,4 @@
+
 interface StoreState {
     view: {
         document: string;
@@ -7,14 +8,14 @@ interface StoreState {
         };
         selected: Model['pid'][];
         hovering: Model['pid'];
-    } & {
-        present: StoreState['view'],
     },
     documents: {
         all: Doc[],
         documentOrder: Doc['pid'][];
     },
 }
+
+
 
 interface Model {
     pid: string;
