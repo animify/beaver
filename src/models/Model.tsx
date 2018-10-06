@@ -1,13 +1,15 @@
-import { Sprite } from '@inlet/react-pixi';
+import { Container } from '@inlet/react-pixi';
 import produce from 'immer';
 import * as PIXI from 'pixi.js';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { ModelType } from 'src/types/enums';
 import { getModel } from '../selectors';
 import { updateModel } from '../store/actions/view';
 import { IHistoryStoreState } from '../types/module';
 import Storage from '../utils/storage';
+import Frame from './Frame';
 
 export interface IOwnProps {
     pid: string;
@@ -70,23 +72,34 @@ class BaseModel extends React.PureComponent<Props, IState> {
         });
     };
 
+    public getComponentFromType(type: ModelInstance) {
+        switch (type) {
+            case ModelType.Frame:
+                return Frame;
+            default:
+                return Frame;
+        }
+    }
+
     public render() {
         const { dragging, model } = this.state;
         const position = dragging ? model.position : this.props.model.position;
+        const ModelChild = this.getComponentFromType(model.type);
 
-        if (model.type === 'screen') {
+        if (model.type === ModelType.Frame) {
             return (
-                <Sprite
+                <Container
                     key={model.pid}
                     interactive={true}
                     pointerdown={this.onDragStart}
                     mousemove={this.onDragMove}
                     mouseup={this.onDragEnd}
                     mouseupoutside={this.onDragEnd}
-                    texture={PIXI.Texture.fromImage(require('./test-images/' + (model as Screen).image))}
                     x={position.x}
                     y={position.y}
-                />
+                >
+                    <ModelChild data={model as Screen} />
+                </Container>
             );
         }
 

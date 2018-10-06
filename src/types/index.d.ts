@@ -1,3 +1,5 @@
+type ModelInstance = 'document' | 'frame' | 'image' | 'shape' | 'text';
+
 interface StoreState {
     view: {
         document: string;
@@ -16,7 +18,7 @@ interface StoreState {
 
 interface Model {
     pid: string;
-    title: string;
+    name: string;
     position: {
         x: number;
         y: number;
@@ -25,7 +27,11 @@ interface Model {
         h: number;
         w: number;
     };
-    type: string;
+    type: ModelInstance;
+}
+
+interface Models {
+    [index: string]: Model;
 }
 
 interface Image extends Model {
@@ -36,11 +42,9 @@ interface Screen extends Image {}
 
 interface Documents {
     [index: string]: {
-        models: {
-            [index: string]: Model;
-        };
+        models: Models;
         order: number;
-        title: string;
+        name: string;
     };
 }
 

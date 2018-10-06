@@ -1,6 +1,6 @@
-import { StateWithHistory } from "redux-undo";
+import { StateWithHistory } from 'redux-undo';
 
 export interface IHistoryStoreState {
-    view: StoreState['view'] & StateWithHistory<StoreState['view']>,
-    documents: StoreState['documents']
+    view: StoreState['view'] & StateWithHistory<StoreState['view']>;
+    documents: StoreState['documents'];
 }

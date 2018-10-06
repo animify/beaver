@@ -1,25 +1,29 @@
 import * as cuid from 'cuid';
 import produce from 'immer';
+import { ActionType, getType } from 'typesafe-actions';
 import parser from '../../parser';
 import { IHistoryStoreState } from '../../types/module';
+import * as viewActions from '../actions/view';
 
-const viewReducer = produce((draft: IHistoryStoreState['view'], action: ReducerAction) => {
+export type ViewAction = ActionType<typeof viewActions>;
+
+const viewReducer = produce((draft: IHistoryStoreState['view'], action: ViewAction) => {
     switch (action.type) {
-        case 'MODEL::UPDATE':
-            draft.models[action.payload.id] = {
-                ...draft.models[action.payload.id],
+        case getType(viewActions.updateModel):
+            draft.models[action.payload.pid] = {
+                ...draft.models[action.payload.pid],
                 ...action.payload.props,
             };
             break;
 
-        case 'DOCUMENT::CHANGE_BOARD':
+        case getType(viewActions.setEntities):
             draft.selected.length = 0;
             draft.models = action.payload.models;
             draft.modelOrder.length = 0;
             draft.modelOrder = Object.keys(action.payload.models);
             break;
 
-        case 'DOCUMENT::DUPLICATE_SELECTED':
+        case getType(viewActions.duplicateSelected):
             const a = draft.selected.length === 0 ? draft.modelOrder : draft.selected;
             const newIds = a.map(pid => {
                 const shortId = cuid();

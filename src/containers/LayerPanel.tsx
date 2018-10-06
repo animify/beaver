@@ -1,31 +1,31 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Model from '../models/Model';
 import { getModelOrder } from '../selectors';
 import { IHistoryStoreState } from '../types/module';
+import Layer from './Layer';
 
 interface IViewProps {
     modelOrder: string[];
+}
+
+class Layers extends React.PureComponent<IViewProps> {
+    public render() {
+        const { modelOrder } = this.props;
+        return (
+            <div className="layers">
+                {modelOrder.map((pid: string) => (
+                    <Layer key={`layer-${pid}`} pid={pid} />
+                ))}
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = (state: IHistoryStoreState) => ({
     modelOrder: getModelOrder(state),
 });
 
-class View extends React.PureComponent<IViewProps> {
-    public render() {
-        const { modelOrder } = this.props;
-        return (
-            <React.Fragment>
-                {modelOrder.map((pid: string) => (
-                    <Model key={`model-${pid}`} pid={pid} />
-                ))}
-            </React.Fragment>
-        );
-    }
-}
-
 export default connect<IViewProps, null, null>(
     mapStateToProps,
     null
-)(View);
+)(Layers);
