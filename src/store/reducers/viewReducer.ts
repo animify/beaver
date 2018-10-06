@@ -1,14 +1,14 @@
+import * as cuid from 'cuid';
 import produce from 'immer';
-import cuid from 'cuid';
 import parser from '../../parser';
-import { HistoryStoreState } from '../../types/module';
+import { IHistoryStoreState } from '../../types/module';
 
-const viewReducer = produce((draft: HistoryStoreState['view'], action: ReducerAction) => {
+const viewReducer = produce((draft: IHistoryStoreState['view'], action: ReducerAction) => {
     switch (action.type) {
         case 'MODEL::UPDATE':
             draft.models[action.payload.id] = {
                 ...draft.models[action.payload.id],
-                ...action.payload.props
+                ...action.payload.props,
             };
             break;
 
@@ -21,7 +21,7 @@ const viewReducer = produce((draft: HistoryStoreState['view'], action: ReducerAc
 
         case 'DOCUMENT::DUPLICATE_SELECTED':
             const a = draft.selected.length === 0 ? draft.modelOrder : draft.selected;
-            const newIds = a.map((pid) => {
+            const newIds = a.map(pid => {
                 const shortId = cuid();
                 const newId = `${draft.models[pid].type}${shortId}`;
                 draft.models[newId] = {
@@ -30,7 +30,7 @@ const viewReducer = produce((draft: HistoryStoreState['view'], action: ReducerAc
                     position: {
                         x: draft.models[pid].position.x + 250,
                         y: draft.models[pid].position.y + 250,
-                    }
+                    },
                 };
 
                 return newId;
@@ -41,10 +41,9 @@ const viewReducer = produce((draft: HistoryStoreState['view'], action: ReducerAc
             draft.selected = newIds;
             draft.modelOrder = [...draft.modelOrder, ...newIds];
             break;
-        default:
-            return draft;
     }
+
+    return draft;
 }, parser.initialState.view);
 
 export default viewReducer;
-

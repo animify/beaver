@@ -1,20 +1,19 @@
 {
-    "extends": [
-        "tslint-react",
-        "tslint-config-prettier"
-    ],
-    "rules": {
-        "variable-name": [
-            true,
-            "ban-keywords",
-            "check-format",
-            "allow-pascal-case"
-        ]
-    },
-    "prettier": true,
-    "linterOptions": {
-        "exclude": [
-            "node_modules/**/*.ts"
-        ]
-    }
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-console": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "prettier.config.js",
+      "src/**/sample.js",
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  }
 }

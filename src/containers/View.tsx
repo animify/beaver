@@ -1,27 +1,26 @@
-import React, { PureComponent, Fragment } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Model from '../models/Model';
 import { getModelOrder } from '../selectors';
-import { HistoryStoreState } from '../types/module';
+import { IHistoryStoreState } from '../types/module';
 
-type ViewProps = {
-    modelOrder?: string[],
+interface IViewProps {
+    modelOrder: string[];
 }
 
-const mapStateToProps = (state: HistoryStoreState) => ({
-    modelOrder: getModelOrder(state)
+const mapStateToProps = (state: IHistoryStoreState) => ({
+    modelOrder: getModelOrder(state),
 });
 
-class View extends PureComponent<ViewProps> {
+class View extends React.PureComponent<IViewProps> {
     public render() {
         const { modelOrder } = this.props;
         return (
-            <Fragment>
+            <React.Fragment>
                 {modelOrder.map((pid: string) => (
                     <Model key={`model-${pid}`} pid={pid} />
                 ))}
-            </Fragment >
+            </React.Fragment>
         );
     }
 }
@@ -30,4 +29,3 @@ export default connect(
     mapStateToProps,
     null
 )(View);
-

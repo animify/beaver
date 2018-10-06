@@ -1,18 +1,19 @@
-import Storage from '../utils/storage';
-import { Point } from "pixi.js";
+import { Point } from 'pixi.js';
 import { INTERACTION_DATA } from '../utils/constants';
+import Storage from '../utils/storage';
 
-export const clientCoords = (function () {
+// tslint:disable-next-line:only-arrow-functions
+export const clientCoords = (function() {
     const ctx = {
-        global: { x: 0, y: 0 } as Point
+        global: { x: 0, y: 0 } as Point,
     };
 
     return (x: number, y: number, graphics: PIXI.DisplayObject = Storage.CONTAINER) => {
         ctx.global.x = x;
         ctx.global.y = y;
         return INTERACTION_DATA.getLocalPosition(graphics, { x, y } as Point, ctx.global);
-    }
-}());
+    };
+})();
 
 export function pan(x: number, y: number) {
     const graphics = Storage.CONTAINER as PIXI.DisplayObject;
@@ -23,7 +24,7 @@ export function pan(x: number, y: number) {
 export function zoom(x: number, y: number, delta: number) {
     const graphics = Storage.CONTAINER as PIXI.DisplayObject;
     const direction = delta < 0 ? 1 : -1;
-    const factor = (1 + direction * 0.14);
+    const factor = 1 + direction * 0.14;
     graphics.scale.x *= factor;
     graphics.scale.y *= factor;
 

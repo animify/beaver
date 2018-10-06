@@ -1,26 +1,17 @@
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers';
+import { applyMiddleware, createStore } from 'redux';
 import parser from '../parser';
+import { IHistoryStoreState } from '../types/module';
+import rootReducer from './reducers';
 
 let enhancer = null;
 
 if (process.env.NODE_ENV !== 'production') {
+    // tslint:disable-next-line:no-var-requires
     enhancer = require('redux-devtools-extension').composeWithDevTools();
 } else {
     enhancer = applyMiddleware();
 }
 
-// if (process.env.NODE_ENV !== 'production') {
-//     const { whyDidYouUpdate } = require('why-did-you-update');
-//     whyDidYouUpdate(React);
-// }
-
-console.log(parser)
-
-const store = createStore(
-    rootReducer,
-    parser.initialState,
-    enhancer
-);
+const store = createStore(rootReducer, parser.initialState as IHistoryStoreState, enhancer);
 
 export default store;

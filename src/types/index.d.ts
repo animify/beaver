@@ -1,21 +1,18 @@
-
 interface StoreState {
     view: {
         document: string;
-        modelOrder: Model['pid'][];
+        modelOrder: Array<Model['pid']>;
         models: {
             [index: string]: Model;
         };
-        selected: Model['pid'][];
-        hovering: Model['pid'];
-    },
+        selected: Array<Model['pid']>;
+        hovering: Model['pid'] | null;
+    };
     documents: {
-        all: Doc[],
-        documentOrder: Doc['pid'][];
-    },
+        all: Documents;
+        documentOrder: string[];
+    };
 }
-
-
 
 interface Model {
     pid: string;
@@ -35,12 +32,16 @@ interface Image extends Model {
     image: string;
 }
 
-interface Screen extends Image {
-}
+interface Screen extends Image {}
 
-interface Doc {
-    pid: string;
-    [index: string]: any;
+interface Documents {
+    [index: string]: {
+        models: {
+            [index: string]: Model;
+        };
+        order: number;
+        title: string;
+    };
 }
 
 interface ReducerAction {

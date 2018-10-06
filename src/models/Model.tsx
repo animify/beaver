@@ -1,78 +1,76 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import * as PIXI from "pixi.js";
 import { Sprite } from '@inlet/react-pixi';
-import { getModel } from '../selectors';
-import { Dispatch, bindActionCreators } from 'redux';
-import Storage from '../utils/storage';
 import produce from 'immer';
+import * as PIXI from 'pixi.js';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { getModel } from '../selectors';
 import { updateModel } from '../store/actions/view';
-import { HistoryStoreState } from '../types/module';
+import { IHistoryStoreState } from '../types/module';
+import Storage from '../utils/storage';
 
-type IModelProps = {
+export interface IOwnProps {
     pid: string;
 }
 
-type ModelProps = {
-    model?: Model,
-    updateModel?: (pid: Model['pid'], props: Partial<Model>) => void
+interface IStateProps {
+    model: Model;
 }
 
-type ModelState = {
+interface IDispatchProps {
+    updateModel: (pid: Model['pid'], props: Partial<Model>) => void;
+}
+
+interface IState {
     dragging: boolean;
     model: Model;
     draggingInitialCoords: PIXI.Point;
 }
 
-const makeMapStateToProps = (initialState: HistoryStoreState, initialProps: IModelProps) => {
-    return (state: HistoryStoreState) => ({
-        model: getModel(state, initialProps),
-    });
-}
+type Props = IStateProps & IDispatchProps & IOwnProps;
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-    updateModel
-}, dispatch);
-
-class BaseModel extends PureComponent<ModelProps, ModelState> {
-    state = {
+class BaseModel extends React.PureComponent<Props, IState> {
+    public state = {
         dragging: false,
         draggingInitialCoords: { x: 0, y: 0 },
         model: { ...this.props.model },
-    } as ModelState;
+    } as IState;
 
-    componentWillReceiveProps(props: any) {
+    public componentWillReceiveProps(props: any) {
         console.log('new props', props);
     }
 
-    onDragStart = (e: PIXI.interaction.InteractionEvent) => {
+    public onDragStart = (e: PIXI.interaction.InteractionEvent) => {
         this.setState(() => ({
             dragging: true,
-            draggingInitialCoords: e.data.getLocalPosition(Storage.CONTAINER)
+            draggingInitialCoords: e.data.getLocalPosition(Storage.CONTAINER),
         }));
-    }
+    };
 
-    onDragMove = (e: PIXI.interaction.InteractionEvent) => {
-
+    public onDragMove = (e: PIXI.interaction.InteractionEvent) => {
         if (this.state.dragging) {
             const { draggingInitialCoords } = this.state;
             const newPosition = e.data.getLocalPosition(Storage.CONTAINER);
 
-            this.setState(produce((draft: any) => {
-                draft.model.position.x += (newPosition.x - draggingInitialCoords.x);
-                draft.model.position.y += (newPosition.y - draggingInitialCoords.y);
-                draft.draggingInitialCoords = newPosition;
-            }))
+            this.setState(
+                produce((draft: any) => {
+                    draft.model.position.x += newPosition.x - draggingInitialCoords.x;
+                    draft.model.position.y += newPosition.y - draggingInitialCoords.y;
+                    draft.draggingInitialCoords = newPosition;
+                })
+            );
         }
-    }
+    };
 
-    onDragEnd = () => {
+    public onDragEnd = () => {
         this.setState(() => ({ dragging: false }));
 
-        this.props.updateModel(this.state.model.pid, { position: { ...this.state.model.position } })
-    }
+        this.props.updateModel(this.state.model.pid, {
+            position: { ...this.state.model.position },
+        });
+    };
 
-    render() {
+    public render() {
         const { dragging, model } = this.state;
         const position = dragging ? model.position : this.props.model.position;
 
@@ -92,11 +90,25 @@ class BaseModel extends PureComponent<ModelProps, ModelState> {
             );
         }
 
-        return null
+        return null;
     }
 }
 
-export default connect(
+const makeMapStateToProps = (initialState: IHistoryStoreState, initialProps: IOwnProps) => {
+    return (state: IHistoryStoreState) => ({
+        model: getModel(state, initialProps),
+    });
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            updateModel,
+        },
+        dispatch
+    );
+
+export default connect<IStateProps, IDispatchProps, IOwnProps>(
     makeMapStateToProps,
     mapDispatchToProps
 )(BaseModel);

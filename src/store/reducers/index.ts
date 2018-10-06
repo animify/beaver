@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import undoable, { groupByActionTypes, includeAction } from 'redux-undo';
-import viewReducer from './viewReducer';
+import undoable from 'redux-undo';
 import documentsReducer from './documentsReducer';
+import viewReducer from './viewReducer';
 
 export default combineReducers({
-    view: undoable(viewReducer),
     documents: documentsReducer,
+    view: undoable(viewReducer),
 });

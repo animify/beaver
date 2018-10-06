@@ -1,6 +1,6 @@
 import produce from 'immer';
-import parser from '../../parser';
 import { Action } from 'redux';
+import parser from '../../parser';
 
 const documentsReducer = produce((draft: StoreState['documents'], action: Action) => {
     switch (action.type) {
@@ -10,4 +10,3 @@ const documentsReducer = produce((draft: StoreState['documents'], action: Action
 }, parser.initialState.documents);
 
 export default documentsReducer;
-
