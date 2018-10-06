@@ -7,6 +7,7 @@ import { IHistoryStoreState } from '../types/module';
 
 export interface IOwnProps {
     pid: string;
+    style: React.CSSProperties;
 }
 
 interface IStateProps {
@@ -21,9 +22,9 @@ type Props = IStateProps & IDispatchProps & IOwnProps;
 
 class Layer extends React.PureComponent<Props> {
     public render() {
-        const { model } = this.props;
+        const { model, style } = this.props;
         return (
-            <div className="layer">
+            <div style={style} className="layer">
                 <p>{model.name}</p>
             </div>
         );
