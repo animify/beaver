@@ -1,5 +1,10 @@
 @import url('https://rsms.me/inter/inter-ui.css');
 
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +12,7 @@ body {
     overflow: hidden;
     height: 100%;
     width: 100%;
-    font-size: 14px;
+    font-size: 12px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -48,6 +53,15 @@ p {
     color: #fff;
 
     .layer {
-        height: 20px;
+        background-color: #1c1d1e;
+        border-bottom: 1px solid #2e3031;
+        padding: 0 12px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        p {
+            line-height: 1;
+        }
     }
 }

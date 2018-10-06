@@ -11,7 +11,7 @@ interface IViewProps {
 
 class Layers extends React.PureComponent<IViewProps> {
     public getItemSize = () => {
-        return 20;
+        return 38;
     };
 
     public Row = ({ key, style, index }: ListRowProps) => {
