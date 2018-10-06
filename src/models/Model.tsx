@@ -4,7 +4,7 @@ import * as PIXI from 'pixi.js';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { ModelType } from 'src/types/enums';
+import { ModelType } from '../../src/types/enums';
 import { getModel } from '../selectors';
 import { updateModel } from '../store/actions/view';
 import { IHistoryStoreState } from '../types/module';
