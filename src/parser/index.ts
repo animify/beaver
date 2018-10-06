@@ -14,6 +14,9 @@ export default {
             all: sample.documents,
             documentOrder: Object.keys(sample.documents),
         },
+        status: {
+            create: null,
+        },
         view: {
             document: sample.visibleDocument,
             hovering: null,

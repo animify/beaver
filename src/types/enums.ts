@@ -5,3 +5,9 @@ export const enum ModelType {
     'Image' = 'image',
     'Frame' = 'frame',
 }
+
+export const enum ShapeType {
+    'Rect' = 'rect',
+    'Ellipse' = 'ellipse',
+    'Polygon' = 'polygon',
+}

@@ -1,4 +1,5 @@
 type ModelInstance = 'document' | 'frame' | 'image' | 'shape' | 'text';
+type ShapeInstance = 'rect' | 'ellipse' | 'polygon';
 
 interface StoreState {
     view: {
@@ -14,21 +15,35 @@ interface StoreState {
         all: Documents;
         documentOrder: string[];
     };
+    status: {
+        create: {
+            active: boolean;
+            type: ModelInstance;
+            x: number;
+            y: number;
+            w: number;
+            h: number;
+        } | null;
+    };
 }
 
 interface Model {
     pid: string;
     name: string;
-    position: {
-        x: number;
-        y: number;
-    };
-    size: {
-        h: number;
-        w: number;
-    };
+    position: Point;
+    size: Size;
     selected?: boolean;
     type: ModelInstance;
+}
+
+interface Point {
+    x: number;
+    y: number;
+}
+
+interface Size {
+    w: number;
+    h: number;
 }
 
 interface Models {
@@ -39,7 +54,11 @@ interface Image extends Model {
     image: string;
 }
 
-interface Screen extends Image {}
+interface Shape extends Model {
+    shape: ShapeInstance;
+}
+
+interface Frame extends Image {}
 
 interface Documents {
     [index: string]: {
@@ -47,10 +66,4 @@ interface Documents {
         order: number;
         name: string;
     };
-}
-
-interface ReducerAction {
-    id: string;
-    type: string;
-    payload: any;
 }

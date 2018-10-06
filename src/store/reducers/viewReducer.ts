@@ -9,7 +9,22 @@ export type ViewAction = ActionType<typeof viewActions>;
 
 const viewReducer = produce((draft: IHistoryStoreState['view'], action: ViewAction) => {
     switch (action.type) {
+        case getType(viewActions.newModel):
+            draft.models[action.payload.props.pid] = action.payload.props;
+            draft.modelOrder = [...draft.modelOrder, action.payload.props.pid];
+            break;
+
         case getType(viewActions.selectModel):
+            draft.models[action.payload.pid].selected = true;
+            break;
+
+        case getType(viewActions.toggleSelectModel):
+            if (action.payload.deselectAll) {
+                Object.values(draft.models)
+                    .filter(m => m.selected && m.pid !== action.payload.pid)
+                    .forEach(m => (m.selected = false));
+            }
+
             draft.models[action.payload.pid].selected = true;
             break;
 

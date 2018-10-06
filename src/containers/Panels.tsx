@@ -1,10 +1,14 @@
 import * as React from 'react';
 import DocumentPanel from './DocumentPanel';
 import LayerPanel from './LayerPanel';
+import ToolPanel from './ToolPanel';
 
 const Panels: React.SFC = _ => (
     <React.Fragment>
-        <LayerPanel />
+        <div className="leftpanel">
+            <ToolPanel />
+            <LayerPanel />
+        </div>
         <DocumentPanel />
     </React.Fragment>
 );

@@ -12,6 +12,7 @@
     "pixi.js": "^4.8.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-feather": "^1.1.3",
     "react-redux": "^5.0.7",
     "react-scripts-ts": "4.0.8",
     "react-virtualized": "^9.20.1",

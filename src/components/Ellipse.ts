@@ -13,7 +13,7 @@ export interface IOwnProps {
     height: number;
 }
 
-export default PixiComponent('Rectangle', {
+export default PixiComponent('Ellipse', {
     applyProps: (instance: PIXI.Graphics, oldProps, newProps: IOwnProps) => {
         const { fillColor, fillColorAlpha, strokeWidth, strokeColor, strokeColorAlpha, x, y, width, height } = newProps;
         instance.clear();
@@ -27,7 +27,7 @@ export default PixiComponent('Rectangle', {
             instance.fillAlpha = fillColorAlpha || 1;
         }
 
-        instance.drawRect(x || 0, y || 0, width, height);
+        instance.drawEllipse(x || width / 2, y || height / 2, width / 2, height / 2);
         instance.endFill();
     },
     create: _ => {

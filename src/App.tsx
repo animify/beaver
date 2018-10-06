@@ -11,7 +11,12 @@ const App = () => {
         <Provider store={store}>
             <React.Fragment>
                 <Panels />
-                <Stage width={window.innerWidth} height={window.innerHeight} options={{ backgroundColor: 0x000, antialias: true }}>
+                <Stage
+                    id="canvas"
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    options={{ backgroundColor: 0x000, antialias: true }}
+                >
                     <Container ref={con => (Storage.CONTAINER = con as PIXI.DisplayObject & Container)}>
                         <View />
                         <Frames />

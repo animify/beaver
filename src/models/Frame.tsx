@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js';
 import * as React from 'react';
 
 export interface IOwnProps {
-    data: Screen;
+    data: Frame;
 }
 
 class FrameModel extends React.PureComponent<IOwnProps> {
