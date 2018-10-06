@@ -5,6 +5,7 @@
   "dependencies": {
     "@inlet/react-pixi": "^0.2.0",
     "@types/react-virtualized": "^9.18.7",
+    "@types/reselect": "^2.2.0",
     "cuid": "^2.1.4",
     "immer": "^1.7.2",
     "node-sass": "^4.9.3",
@@ -16,6 +17,7 @@
     "react-virtualized": "^9.20.1",
     "redux": "^4.0.0",
     "redux-undo": "^1.0.0-beta9-9-7",
+    "reselect": "^4.0.0",
     "typesafe-actions": "^2.0.4"
   },
   "scripts": {

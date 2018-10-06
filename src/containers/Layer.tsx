@@ -24,7 +24,7 @@ class Layer extends React.PureComponent<Props> {
     public render() {
         const { model, style } = this.props;
         return (
-            <div style={style} className="layer">
+            <div style={style} className={model.selected ? 'layer selected' : `layer`}>
                 <p>{model.name}</p>
             </div>
         );

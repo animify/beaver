@@ -27,6 +27,7 @@ interface Model {
         h: number;
         w: number;
     };
+    selected?: boolean;
     type: ModelInstance;
 }
 

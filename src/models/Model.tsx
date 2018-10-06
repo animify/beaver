@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { ModelType } from '../../src/types/enums';
 import { getModel } from '../selectors';
-import { updateModel } from '../store/actions/view';
+import { selectModel, updateModel } from '../store/actions/view';
 import { IHistoryStoreState } from '../types/module';
 import Storage from '../utils/storage';
 import Frame from './Frame';
@@ -21,6 +21,7 @@ interface IStateProps {
 
 interface IDispatchProps {
     updateModel: (pid: Model['pid'], props: Partial<Model>) => void;
+    selectModel: (pid: Model['pid']) => void;
 }
 
 interface IState {
@@ -47,6 +48,8 @@ class BaseModel extends React.PureComponent<Props, IState> {
             dragging: true,
             draggingInitialCoords: e.data.getLocalPosition(Storage.CONTAINER),
         }));
+
+        this.props.selectModel(this.state.model.pid);
     };
 
     public onDragMove = (e: PIXI.interaction.InteractionEvent) => {
@@ -66,6 +69,10 @@ class BaseModel extends React.PureComponent<Props, IState> {
 
     public onDragEnd = () => {
         this.setState(() => ({ dragging: false }));
+
+        if (this.props.model.position.x === this.state.model.position.x && this.props.model.position.y === this.state.model.position.y) {
+            return;
+        }
 
         this.props.updateModel(this.state.model.pid, {
             position: { ...this.state.model.position },
@@ -116,6 +123,7 @@ const makeMapStateToProps = (initialState: IHistoryStoreState, initialProps: IOw
 const mapDispatchToProps = (dispatch: Dispatch) =>
     bindActionCreators(
         {
+            selectModel,
             updateModel,
         },
         dispatch

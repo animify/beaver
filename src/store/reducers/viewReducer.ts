@@ -9,6 +9,10 @@ export type ViewAction = ActionType<typeof viewActions>;
 
 const viewReducer = produce((draft: IHistoryStoreState['view'], action: ViewAction) => {
     switch (action.type) {
+        case getType(viewActions.selectModel):
+            draft.models[action.payload.pid].selected = true;
+            break;
+
         case getType(viewActions.updateModel):
             draft.models[action.payload.pid] = {
                 ...draft.models[action.payload.pid],

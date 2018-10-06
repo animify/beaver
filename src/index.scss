@@ -63,5 +63,10 @@ p {
         p {
             line-height: 1;
         }
+
+        &.selected {
+            background-color: #4756ff;
+            border-color: #404bc9;
+        }
     }
 }
